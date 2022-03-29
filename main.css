@@ -1,19 +1,15 @@
-body, html {
-    height: 100%;
-  }
-.style-0 { /*background gradient*/
-    height: 200px;
-    background-image: url(Back.jpeg); /* used if the browser doensn't support gradients */
+html { 
+    min-height: 100%; 
+    background-image: url(Back.jpeg);
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
   }
   .preview {
     height: 16rem;
     border-bottom: 1px solid #999;
   }
-
-
   .vertical {
     margin: 0;
     position: absolute;
@@ -21,14 +17,14 @@ body, html {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
-  .logo{
-    left: 7%;
+  .logo {
     display: inline-block;
     width: auto;
-    height: 100%;
+    top: 7%;
+    left: 7%;
+    background-color: rgba(255, 0, 0, 0.527);
   }
-  .signin{
-    left: 0%;
-    top: 12%;
+  .signin {
+    left: -1%;
+    top: 5%;
   }
-
