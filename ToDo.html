@@ -7,15 +7,15 @@
     </head>
 <body>
     <div class="header">
-        <input type="text" id="myInput" placeholder="Title...">
-        <span onclick="newElement()" class="addBtn">Add</span>
+        <input  class="input" type="text" id="myInput" placeholder="Write new todo here">
+        <span onclick="newElement()" class="addBtn input ">Add</span>
     </div>
 
-    <ul id="myUL">
+    <ul id="list">
         <li>test</li>
     </ul>
 
-    <script type="text/javascript">
+  <script type="text/javascript">
         function newElement() {
   var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;
@@ -24,7 +24,7 @@
   if (inputValue === '') {
     alert("You must write something!");
   } else {
-    document.getElementById("myUL").appendChild(li);
+    document.getElementById("list").appendChild(li);
   }
   document.getElementById("myInput").value = "";
 
@@ -41,6 +41,15 @@
     }
   }
 }
+
+var input = document.getElementById("myInput");
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        newElement();
+    }
+});
+
         var myNodelist = document.getElementsByTagName("LI");
         var i;
         for (i = 0; i < myNodelist.length; i++) {
