@@ -1,0 +1,86 @@
+<!--To use this program download the live server extension in Visual Studio Code. Right click on the Index.html
+file from the Explorer and click open with live server. In the browser my ToDo app will open to use the system
+type in any todo into the box that says New ToDo. After you are finished you may hit the "add" button or hit enter.
+if you finish a task, simply click on it in the lower are to cross it out. If you need to delete a task, click the
+"X" button on the right side of the task.-->
+
+<!DOCTYPE html>
+<html>
+    <!--basic file declaration stuff-->
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width", initial-scale="1">
+        <link rel="stylesheet" href="Styles.css">
+        <title>APCS Website</title>
+    </head>
+    <body>
+        <!--declares the whole area that the viewport will take up as "boxed" classifies the upper section where
+        the user will type the todo as "main" and creates a user input and button-->
+        <div class="boxed">
+        <div class="main">
+            <input class="input" id="input" type="text" placeholder="New ToDo">
+            <span onclick="newElement()" class="add input">Add</span>
+        </div>
+        <!--creates the user list-->
+        <ul id="list"></ul>
+        </div>
+        <script type="text/javascript">
+            // funky fresh function that gets the input from the user box thwn the add button is pressed
+            //this will then check if the input is blank or not, if so it gives a warning if not it continues by
+            //appending the new input/todo onto the users list then erasing the user input box
+        function newElement() {
+        var li = document.createElement("li");
+        var inputValue = document.getElementById("input").value;
+        var t = document.createTextNode(inputValue);
+        li.appendChild(t);
+        if (inputValue === '') {
+            alert("You must write something!");
+        } else {
+            document.getElementById("list").appendChild(li);
+        }
+          document.getElementById("input").value = "";
+
+          var span = document.createElement("SPAN");
+          var txt = document.createTextNode("\u00D7");
+          span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(span);
+
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function() {
+            var div = this.parentElement;
+            div.style.display = "none";
+            }
+        }
+        }
+            //gets user input whilst typing in the create box if the user hits enter then it creates the new todo so they
+            //don't have to move the mouse to hit the button
+            var input = document.getElementById("input");
+
+            input.addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                event.preventDefault();
+                newElement();
+            }
+        });
+
+        //if you hit the close button then the program deletes it
+        var close = document.getElementsByClassName("close");
+        var i;
+        for (i = 0; i < close.length; i++) {
+        close[i].onclick = function() {
+        var div = this.parentElement;
+        div.style.display = "none";
+        }
+    }
+
+    //if a list item (ul) is clicked then the system marks it as checked and lines out the word
+    var list = document.querySelector('ul');
+        list.addEventListener('click', function(ev) {
+        if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+        }, false);
+
+        </script>
+    </body>
+</html>
