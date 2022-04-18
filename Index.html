@@ -20,7 +20,7 @@ if you finish a task, simply click on it in the lower are to cross it out. If yo
         <div class="boxed">
         <div class="main">
             <input class="input" id="input" type="text" placeholder="New ToDo">
-            <span onclick="newElement()" class="add input">Add</span>
+            <span onclick="newElement(input)" class="add input">Add</span> 
         </div>
         <!--creates the user list-->
         <ul id="list"></ul>
@@ -29,9 +29,10 @@ if you finish a task, simply click on it in the lower are to cross it out. If yo
             // funky fresh function that gets the input from the user box thwn the add button is pressed
             //this will then check if the input is blank or not, if so it gives a warning if not it continues by
             //appending the new input/todo onto the users list then erasing the user input box
-        function newElement() {
+            //utilizes input parameter given by onclick in the html
+        function newElement(input) {
         var li = document.createElement("li");
-        var inputValue = document.getElementById("input").value;
+        var inputValue = input.value;
         var t = document.createTextNode(inputValue);
         li.appendChild(t);
         if (inputValue === '') {
@@ -61,7 +62,7 @@ if you finish a task, simply click on it in the lower are to cross it out. If yo
             input.addEventListener("keyup", function(event) {
                 if (event.keyCode === 13) {
                 event.preventDefault();
-                newElement();
+                newElement(input);
             }
         });
 
